@@ -18,4 +18,8 @@ app.get('/home', (req, res) => {
     return res.render('home')
 });
 
+app.get('/service', (req, res) => {
+    return res.render('service')
+});
+
 app.listen(port, () => console.log('frontend is live'));
