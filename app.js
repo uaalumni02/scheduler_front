@@ -1,8 +1,8 @@
 import express from 'express';
-const path = require('path');
-const ejs = require('ejs');
-const bodyParser = require('body-parser');
-const axios = require('axios')
+import path from 'path';
+import ejs from 'ejs';
+import bodyParser from 'body-parser';
+import axios from 'axios'
 
 const app = express();
 

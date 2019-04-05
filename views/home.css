@@ -1,0 +1,28 @@
+.btn-primary.custom-btn {
+	background-color: #000;
+	border-color: #000;
+}
+
+.barber {
+        background-image: url('https://thefader-res.cloudinary.com/private_images/w_1440,c_limit,f_auto,q_auto:best/40380002_WEB_gmcgws/levels-barbershop-new-york-ny.jpg');
+        display: block;
+        margin: 0 auto;
+        text-indent: -9999px;
+        width: 2080px;
+        height: 580px;
+}
+
+.jumbotron{
+    background-color:  grey;
+}
+.footer {
+    color:grey;
+    font: italic 12px/30px Arial;
+    position: fixed;
+    width: 100%;
+    float: left;
+    bottom: 0;
+    padding-bottom: 2px;
+    min-height: 43px;
+    background: black;
+}
