@@ -21,7 +21,7 @@
         <center>Gentlemen's Cuts For Affordable Prices.</center>
       </p>
       <div class="row justify-content-center">
-        <button id="toServices" type="submit" class="btn-primary.custom-btn">Book Now</button>
+        <button onclick="pageChange()" id="toServices" type="submit" class="btn-primary.custom-btn">Book Now</button>
       </div>
     </div>
     <div class="barber"></div>
@@ -40,10 +40,9 @@
 </body>
 
 <script>
-  document.getElementById("toServices").onclick = () => {booking()};
-  const booking = () => {
-    location.replace("http://localhost:8080/service")
-}
+  const pageChange = () => {
+        location.replace("http://localhost:8080/service")
+    }
 </script>
 
 </html>

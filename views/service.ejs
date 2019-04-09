@@ -33,7 +33,7 @@
     </div>
 
     <div class="row justify-content-center">
-        <button id="toServices" type="submit" class="btn-primary.custom-btn">Book Now</button>
+        <button onclick="pageChange()" id="serviceBtn" type="submit" class="btn-primary.custom-btn">Book Now</button>
     </div>
 </body>
 <script>
@@ -47,10 +47,10 @@
                 response.forEach(res => {
                     const wrapper = document.getElementById('wrapper')
                     wrapper.innerHTML += `
-                        <label class="container">
+                        <label id="name" class="container">
                             ${res.name}
-                            <span class="item-price"> $${res.price}</span>
-                            <span class="item-time">${res.time} Minutes </span>
+                            <span id="price" class="item-price"> $${res.price}</span>
+                            <span id="time" class="item-time">${res.time} Minutes </span>
                             <input type="radio" name="radio">
                             <span class="checkmark"></span>
                         </label>
@@ -59,8 +59,10 @@
             })
             .catch(error => console.error('Error:', error));
     })
-
-
+    
+    const pageChange = () => {
+        location.replace("http://localhost:8080/schedule")
+    }
 </script>
 
 </html>
