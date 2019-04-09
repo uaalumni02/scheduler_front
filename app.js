@@ -22,4 +22,9 @@ app.get('/service', (req, res) => {
     return res.render('service')
 });
 
+app.get('/schedule', (req, res) => {
+    return res.render('schedule')
+});
+
+
 app.listen(port, () => console.log('frontend is live'));
