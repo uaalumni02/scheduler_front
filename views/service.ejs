@@ -19,28 +19,48 @@
                 <center>Cuts By De'Meco</center>
             </h1>
             <p class="lead">
-                <center>Gentlemen's Cuts For Affordable Prices.</center>
+                <center>Gentlemen's Cuts For Affordable Prices. </center>
             </p>
 
         </div>
     </div>
-    <h1><center>Select a Service</center></h1>
-    <label class="container">One
-        <input type="radio" checked="checked" name="radio">
-        <span class="checkmark"></span>
-    </label>
-    <label class="container">Two
-        <input type="radio" name="radio">
-        <span class="checkmark"></span>
-    </label>
-    <label class="container">Three
-        <input type="radio" name="radio">
-        <span class="checkmark"></span>
-    </label>
-    <label class="container">Four
-        <input type="radio" name="radio">
-        <span class="checkmark"></span>
-    </label>
+    <h1>
+        <center>Select a Service</center>
+    </h1>
+
+    <div id="wrapper">
+
+    </div>
+
+    <div class="row justify-content-center">
+        <button id="toServices" type="submit" class="btn-primary.custom-btn">Book Now</button>
+    </div>
 </body>
+<script>
+    window.addEventListener("load", () => {
+        fetch('http://localhost:3000/services/', {
+            method: "GET",
+        })
+            .then(res => res.json())
+            .then(response => {
+
+                response.forEach(res => {
+                    const wrapper = document.getElementById('wrapper')
+                    wrapper.innerHTML += `
+                        <label class="container">
+                            ${res.name}
+                            <span class="item-price"> $${res.price}</span>
+                            <span class="item-time">${res.time} Minutes </span>
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                        </label>
+                    `
+                })
+            })
+            .catch(error => console.error('Error:', error));
+    })
+
+
+</script>
 
 </html>
