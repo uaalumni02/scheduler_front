@@ -1,17 +1,16 @@
 import express from 'express';
 import ejs from 'ejs';
-import bodyParser from 'body-parser';
 import axios from 'axios'
+import serviceController from './controllers/service';
 
 const app = express();
 
 const port = process.env.PORT || 8080;
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/views'))
+
 
 app.get('/home', (req, res) => {
     return res.render('home')
@@ -19,7 +18,6 @@ app.get('/home', (req, res) => {
 
 app.get('/service', (req, res) => {
     const requestUrl = 'http://localhost:3000/services/';
-
     return axios.get(requestUrl)
         .then((response) => {
             const serviceData = response.data
@@ -29,6 +27,7 @@ app.get('/service', (req, res) => {
         .catch((err) => {
             res.send(err.message);
         });
+    
 });
 
 app.get('/schedule', (req, res) => {
