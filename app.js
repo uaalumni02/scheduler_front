@@ -1,5 +1,4 @@
 import express from 'express';
-import path from 'path';
 import ejs from 'ejs';
 import bodyParser from 'body-parser';
 import axios from 'axios'
@@ -19,12 +18,21 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/service', (req, res) => {
-    return res.render('service')
+    const requestUrl = 'http://localhost:3000/services/';
+
+    return axios.get(requestUrl)
+        .then((response) => {
+            const serviceData = response.data
+            return res.status(200)
+                .render('service/service', { response: serviceData });
+        })
+        .catch((err) => {
+            res.send(err.message);
+        });
 });
 
 app.get('/schedule', (req, res) => {
     return res.render('schedule')
 });
-
 
 app.listen(port, () => console.log('frontend is live'));
