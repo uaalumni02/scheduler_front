@@ -1,7 +1,7 @@
 import express from 'express';
 import ejs from 'ejs';
 import axios from 'axios'
-import serviceController from './controllers/service';
+
 
 const app = express();
 
@@ -30,8 +30,5 @@ app.get('/service', (req, res) => {
     
 });
 
-app.get('/schedule', (req, res) => {
-    return res.render('schedule')
-});
 
 app.listen(port, () => console.log('frontend is live'));
