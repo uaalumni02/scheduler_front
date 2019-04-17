@@ -16,19 +16,22 @@ app.get('/home', (req, res) => {
     return res.render('home')
 });
 
-app.get('/service', (req, res) => {
-    const requestUrl = 'http://localhost:3000/services/';
-    return axios.get(requestUrl)
-        .then((response) => {
-            const serviceData = response.data
-            return res.status(200)
-                .render('service/service', { response: serviceData });
-        })
-        .catch((err) => {
-            res.send(err.message);
-        });
-    
-});
+ app.get('/service', (req, res) => {
+    return axios.all([
+      axios.get('http://localhost:3000/services/'),
+      axios.get('http://localhost:3000/times')
+    ])
+    .then(axios.spread((service, times) => {
+      const allServices = service.data;
+      const allTimes = times.data;
 
+      return res.status(200)
+        .render('service/service', { times: allTimes, services: allServices })
+      // console.log('Services', service.data);
+      console.log('Times', times.data);
+    }));
+
+});
+  
 
 app.listen(port, () => console.log('frontend is live'));

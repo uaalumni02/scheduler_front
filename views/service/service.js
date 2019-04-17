@@ -4,5 +4,9 @@ const pageChange = () => {
     document.getElementById('name').style.display = "none";
     document.getElementById('serviceBtn').style.display = "none";
     document.getElementById('calender').style.display = "block";
+    
 }
-
+const customerInfo = () => {
+    document.getElementById('calender').style.display = "none";
+    document.getElementById('container-contact100').style.display = "block";
+}

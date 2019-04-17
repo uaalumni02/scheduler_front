@@ -28,12 +28,12 @@
         <h1>
             <center>Select a Service</center>
         </h1>
-        <% for(var i = 0; i < response.length; i++) { %>
-        <input id="service" type="radio" name="service" value="<%= response[i]._id %> ">
+        <% for(var i = 0; i < services.length; i++) { %>
+        <input id="service" type="radio" name="service" value="<%= services[i]._id %> ">
         <span class="checkmark"></span>
-        <span id="price" class="item-price"> <%= response[i].name %> </span>
-        <span id="price" class="item-price"> <%= response[i].price %> </span>
-        <span id="price" class="item-price"> <%= response[i].time %> </span>
+        <span id="price" class="item-price"> <%= services[i].name %> </span>
+        <span id="price" class="item-price"> <%= services[i].price %> </span>
+        <span id="price" class="item-price"> <%= services[i].time %> </span>
         <% } %>
 
     </label>
@@ -42,13 +42,38 @@
         <button onclick="pageChange()" id="serviceBtn" type="submit" class="btn-primary.custom-btn">Continue</button>
     </div>
 
-    <form id="calender" action="/action_page.php">
+    <form id="calender">
         <input id="date" type="date" name="appt" min="2019-04-09">
-        <input type="submit">
+        <input type="button" value="Continue" onclick="customerInfo()">
+        <% for(var i = 0; i < times.length; i++) { %>
+        <span id="time" type="button" class="apptTime"> <%= times[i].startTime %> </span>
+        <% } %>
     </form>
+    <div id="container-contact100">
+        <div class="wrap-contact100">
+            <form id="customerForm" class="contact100-form validate-form" method="POST">
+                <span class="contact100-form-title">
+                    Enter Customer Information
+                </span>
 
+                <div class="wrap-input100  bg1">
+                    <span class="label-input100">FULL NAME *</span>
+                    <input class="input100" id="name" type="text" name="name" placeholder="Enter Your Name">
+                </div>
+
+                <div class="wrap-input100  bg1 rs1-wrap-input100">
+                    <span class="label-input100">Email *</span>
+                    <input class="input100" type="text" name="email" id="email" placeholder="Enter Your Email ">
+                </div>
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Phone *</span>
+                    <input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone">
+                </div>
+
+        </div>
+        <input type="button" value="Book">
 </body>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="service.js">
 
 </script>
