@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">
@@ -23,35 +24,35 @@
 
         </div>
     </div>
+    <form action="" method="POST">
+        <div id="name" class="container">
+            <h1>
+                <center>Select a Service</center>
+            </h1>
+            <% for(var i = 0; i < services.length; i++) { %>
+            <input id="service" type="radio" name="service" value="<%= services[i]._id %> ">
+            <span class="checkmark"></span>
+            <span id="price" class="item-price"> <%= services[i].name %> </span>
+            <span id="price" class="item-price"> <%= services[i].price %> </span>
+            <span id="price" class="item-price"> <%= services[i].time %> </span>
+            <% } %>
 
-    <label id="name" class="container">
-        <h1>
-            <center>Select a Service</center>
-        </h1>
-        <% for(var i = 0; i < services.length; i++) { %>
-        <input id="service" type="radio" name="service" value="<%= services[i]._id %> ">
-        <span class="checkmark"></span>
-        <span id="price" class="item-price"> <%= services[i].name %> </span>
-        <span id="price" class="item-price"> <%= services[i].price %> </span>
-        <span id="price" class="item-price"> <%= services[i].time %> </span>
-        <% } %>
+            </div>
 
-    </label>
+        <div class="row justify-content-center">
+            <button id="serviceBtn" type="submit"
+                class="btn-primary.custom-btn">Continue</button>
+        </div>
 
-    <div class="row justify-content-center">
-        <button onclick="pageChange()" id="serviceBtn" type="submit" class="btn-primary.custom-btn">Continue</button>
-    </div>
-
-    <form id="calender">
-        <input id="date" type="date" name="appt" min="2019-04-09">
-        <input type="button" value="Continue" onclick="customerInfo()">
-        <% for(var i = 0; i < times.length; i++) { %>
-        <span id="time" type="button" class="apptTime"> <%= times[i].startTime %> </span>
-        <% } %>
-    </form>
-    <div id="container-contact100">
-        <div class="wrap-contact100">
-            <form id="customerForm" class="contact100-form validate-form" method="POST">
+        <div id="calender">
+            <input id="date" type="date" name="appt" min="2019-04-09">
+            <input type="button" id="calenderBtn" value="Continue" >
+            <% for(var i = 0; i < times.length; i++) { %>
+            <span id="time" type="button" class="apptTime"> <%= times[i].startTime %> </span>
+            <% } %>
+        </div>
+        <div id="container-contact100">
+            <div class="wrap-contact100">
                 <span class="contact100-form-title">
                     Enter Customer Information
                 </span>
@@ -71,8 +72,9 @@
                     <input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone">
                 </div>
 
-        </div>
-        <input type="button" value="Book">
+            </div>
+            <input type="button"  value="Book">
+        </form>
 </body>
 <script src="service.js">
 
