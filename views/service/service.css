@@ -11,12 +11,12 @@ input[type=date]::-webkit-inner-spin-button {
     display: none
 }
 
-#time {
+/* #time {
     display: block;
     width: 100px;
     height: 50px;
     color: blue;
     background-color: lightskyblue;
     margin: 3px;
-}
+} */
 

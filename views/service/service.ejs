@@ -24,7 +24,7 @@
 
         </div>
     </div>
-    <form action="" method="POST">
+    <form id="barberForm" action="" method="POST">
         <div id="name" class="container">
             <h1>
                 <center>Select a Service</center>
@@ -37,18 +37,17 @@
             <span id="price" class="item-price"> <%= services[i].time %> </span>
             <% } %>
 
-            </div>
+        </div>
 
         <div class="row justify-content-center">
-            <button id="serviceBtn" type="submit"
-                class="btn-primary.custom-btn">Continue</button>
+            <button id="serviceBtn" type="submit" class="btn-primary.custom-btn">Continue</button>
         </div>
 
         <div id="calender">
             <input id="date" type="date" name="appt" min="2019-04-09">
-            <input type="button" id="calenderBtn" value="Continue" >
             <% for(var i = 0; i < times.length; i++) { %>
-            <span id="time" type="button" class="apptTime"> <%= times[i].startTime %> </span>
+            <input id="time" type="radio" onclick="calender(); customerInfo()"name="timeInfo" class="apptTime" value="<%= times[i].startTime %> " > 
+            <span id="timeInfo"  class="appt-time"> <%= times[i].startTime %> </span>
             <% } %>
         </div>
         <div id="container-contact100">
@@ -73,10 +72,28 @@
                 </div>
 
             </div>
-            <input type="button"  value="Book">
-        </form>
+            <input type="button" value="Book">
+    </form>
 </body>
-<script src="service.js">
+<script src="service.js"></script>
+
+<script>
+    const calender = () => {
+        const date = document.getElementById("date").value;
+        fetch('http://localhost:3000/times/' + date, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(res => res.json())
+            .then(response => {
+                for (var i = 0; i < response.length; i++) {
+                    console.log(response[i].startTime)
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
 
 </script>
 

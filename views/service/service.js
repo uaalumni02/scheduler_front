@@ -10,10 +10,14 @@ nextButton1.addEventListener('click', (e) => {
 
 })
 
-const nextButton2 = document.getElementById('calenderBtn');
 
-nextButton2.addEventListener('click', (e) => {
-    e.preventDefault();
+//temp value checker
+// const timesCheck = () => {
+//     const time = document.querySelector('input[name="timeInfo"]:checked').value;
+//     console.log(time)
+// }
+
+const customerInfo = () => {
     document.getElementById('calender').style.display = "none";
     document.getElementById('container-contact100').style.display = "block";
-})
+}
