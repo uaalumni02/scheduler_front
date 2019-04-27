@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="service.css" rel='stylesheet' type='text/css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
     <title>Cuts By De'Meco</title>
 </head>
 
@@ -73,33 +74,39 @@
     </form>
 </body>
 <script src="service.js"></script>
-
 <script>
-    var result;
+    var times;
     fetch('http://localhost:3000/times/')
         .then(res => res.json()) //filter blah // build the radio options
         .then(response => {
-            result = response
-            console.log(result)
+            times = response
+            // console.log(times)
         })
         .catch(error => console.error('Error:', error));
 
+
     const calender = () => {
         const calenderData = document.getElementById("date").value;
-        //had to hard code, moment is causing error
+        const dateTimestamp = moment(calenderData, 'YYYY-MM-DD').unix()
 
-        fetch('http://localhost:3000/appointments/' + 1559188800, {
+        fetch('http://localhost:3000/appointments/' + dateTimestamp, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
             },
         })
-            .then(res => res.json()) //filter blah // build the radio options
+            .then(res => res.json())
             .then(response => {
                 for (var i = 0; i < response.length; i++) {
-                    console.log(response[i])
-
+                    const bookedTime = response[i].startTime
+                    console.log(bookedTime)
                 }
+                const apptTaken = response.map((booked) => booked.startTime);
+                const timeOnly = times.map((time) => time.startTime);
+                const eligibleAppts = timeOnly.filter(start => {
+                    return !apptTaken.includes(start)
+                })
+                console.log(eligibleAppts)
             })
             .catch(error => console.error('Error:', error));
     }
