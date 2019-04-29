@@ -46,7 +46,7 @@
 
         <div id="calender">
             <input id="date" onchange="calender()" type="date" name="appt" min="2019-04-09">
-
+            <div id="apptTime" onclick="customerInfo()"></div>
         </div>
         <div id="container-contact100">
             <div class="wrap-contact100">
@@ -83,12 +83,9 @@
             // console.log(times)
         })
         .catch(error => console.error('Error:', error));
-
-
     const calender = () => {
         const calenderData = document.getElementById("date").value;
         const dateTimestamp = moment(calenderData, 'YYYY-MM-DD').unix()
-
         fetch('http://localhost:3000/appointments/' + dateTimestamp, {
             method: "GET",
             headers: {
@@ -107,10 +104,17 @@
                     return !apptTaken.includes(start)
                 })
                 console.log(eligibleAppts)
+                var radioHtml = '';
+                for (var i = 0; i < eligibleAppts.length; i++) {
+                    radioHtml += '<input type="radio">';
+                    radioHtml += `<span>  ${eligibleAppts[i]} </span>`;
+                    radioHtml += '</input>';
+                }
+                const timeContainer = document.getElementById("apptTime");
+                timeContainer.innerHTML = radioHtml;
             })
             .catch(error => console.error('Error:', error));
     }
-
 </script>
 
 
