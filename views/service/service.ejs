@@ -40,7 +40,6 @@
         </div>
 
         <div class="row justify-content-center">
-            <!-- <input type="submit" value="Select Service"> -->
             <button id="serviceBtn" type="submit" class="btn-primary.custom-btn">Continue</button>
         </div>
 
@@ -56,32 +55,31 @@
 
                 <div class="wrap-input100  bg1">
                     <span class="label-input100">FULL NAME *</span>
-                    <input class="input100" id="customerName" type="text" name="name" placeholder="Enter Your Name">
+                    <input class="input100" id="customerName" type="text" name="name" placeholder="Enter Your Name" required>
                 </div>
 
                 <div class="wrap-input100  bg1 rs1-wrap-input100">
                     <span class="label-input100">Email *</span>
-                    <input class="input100" type="text" name="email" id="email" placeholder="Enter Your Email ">
+                    <input class="input100" type="text" name="email" id="email" placeholder="Enter Your Email" required>
                 </div>
 
                 <div class="wrap-input100 bg1 rs1-wrap-input100">
                     <span class="label-input100">Phone *</span>
-                    <input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone">
+                    <input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone" required>
                 </div>
-
             </div>
-            <!-- <input type="button" value="Book" type="submit"> -->
-            <button type="submit" value="Book"> Book </button>
+            <button type="submit" onclick="booked()" value="Book"> Book </button>
+        </div>
+            <div id="confirm"></div>
     </form>
 </body>
 <script src="service.js"></script>
 <script>
     var times;
     fetch('http://localhost:3000/times/')
-        .then(res => res.json()) //filter blah // build the radio options
+        .then(res => res.json())
         .then(response => {
             times = response
-            // console.log(times)
         })
         .catch(error => console.error('Error:', error));
     const calender = () => {
@@ -97,14 +95,12 @@
             .then(response => {
                 for (var i = 0; i < response.length; i++) {
                     const bookedTime = response[i].startTime
-                    console.log(bookedTime)
                 }
                 const apptTaken = response.map((booked) => booked.startTime);
                 const timeOnly = times.map((time) => time.startTime);
                 const eligibleAppts = timeOnly.filter(start => {
                     return !apptTaken.includes(start)
                 })
-                console.log(eligibleAppts)
                 var radioHtml = '';
                 for (var i = 0; i < eligibleAppts.length; i++) {
                     radioHtml += `<input type="radio" id="startTime" name="startTime" value="${eligibleAppts[i]}">`;
@@ -123,7 +119,6 @@
         theForm.addEventListener("submit", (event) => {
             event.preventDefault();
             let name = document.getElementById("customerName").value;
-            console.log(name)
             let phone = document.getElementById("phone").value;
             let email = document.getElementById("email").value;
             let appointmentDate = document.getElementById("date").value;
@@ -147,7 +142,12 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    console.log(response)
+                    const dateString = moment.unix(response.appointmentDate).format('YYYY-MM-DD');
+                    let html = '';
+                    html += `<p>  Thank you for Booking ${response.name}! </p>`;
+                    html += `<p>  Your Appointment is on: ${dateString} at ${response.startTime}  </p>`;
+                    const customerContainer = document.getElementById("confirm");
+                    customerContainer.innerHTML = html;
                 }).catch(error => console.error('Error:', error));
 
         })

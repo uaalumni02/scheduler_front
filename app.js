@@ -16,6 +16,7 @@ app.get('/home', (req, res) => {
   return res.render('home')
 });
 
+
 app.get('/service', (req, res) => {
 
   var requestUrl = 'http://localhost:3000/services'
