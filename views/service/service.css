@@ -11,5 +11,18 @@ input[type=date]::-webkit-inner-spin-button {
     display: none
 }
 
+.footer {
+    color:grey;
+    font: italic 12px/30px Arial;
+    position: fixed;
+    width: 100%;
+    float: left;
+    bottom: 0;
+    padding-bottom: 2px;
+    min-height: 43px;
+    background: black;
+}
 
-
+.jumbotron{
+    background-color:  grey;
+}
