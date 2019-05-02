@@ -1,4 +1,4 @@
-.btn-primary.custom-btn {
+/* .btn-primary.custom-btn {
 	background-color: #000;
 	border-color: #000;
 }
@@ -26,4 +26,47 @@
     min-height: 43px;
     background: black;
 }
-#toServices:hover { background: red; }
+#toServices:hover { background: red; } */
+
+div.jumbotron {
+    background-color: darkcyan;
+}
+
+.jumbotron h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3.5em;
+}
+
+.jumbotron p {
+    color: #fff;
+    font-size: 1.5em;
+}
+
+li.nav-item {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+/* a.nav-link:hover {
+    background-color: darkcyan !important;
+    color: #fff !important;
+} */
+
+body>div.container-fluid {
+    background-image: url('https://www.yesmagazine.org/issues/mental-health/what-is-barbershop-therapy-20180823/confessproject_primary.jpg/image');
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.book-btn {
+
+    margin: 0 auto;
+    float: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -100px;
+        padding: 30px;
+        opacity: 0.9;
+}
