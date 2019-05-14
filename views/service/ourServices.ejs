@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="service.css" rel='stylesheet' type='text/css' />
+    <link href="home.css" rel='stylesheet' type='text/css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+    <title>Cuts By De'Meco</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">BarberShop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/home">Home </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Our Services</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="http://localhost:8080/service" class="nav-link">Book Now</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div id="serviceInfo" class="container">
+        <h1>
+            <center>Our Services</center>
+        </h1>
+        
+    </div>
+</body>
+<script>
+    fetch('http://localhost:3000/services/')
+        .then(res => res.json())
+        .then(response => {
+            console.log(response)
+            var serviceHtml = '';
+                for (var i = 0; i < response.length; i++) {
+                    serviceHtml +=  `<p> Service: ${response[i].name} </p>`;
+                    serviceHtml += `<p> Price: $${response[i].price} </p>`;
+                    serviceHtml += `<p> Time: ${response[i].time} Mins </p>`;
+                }
+                const serviceContainer = document.getElementById("serviceInfo");
+                serviceContainer.innerHTML = serviceHtml;
+        })
+        .catch(error => console.error('Error:', error));
+</script>
+
+
+</html>

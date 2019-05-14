@@ -29,3 +29,9 @@ input[type=date]::-webkit-inner-spin-button {
 #serviceBtn:hover { background: red; }
 
 #bookBtn:hover { background: red; }
+
+li.nav-item {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}

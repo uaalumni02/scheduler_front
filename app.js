@@ -16,6 +16,10 @@ app.get('/home', (req, res) => {
   return res.render('home')
 });
 
+app.get('/ourServices', (req, res) => {
+  return res.render('service/ourServices')
+});
+
 
 app.get('/service', (req, res) => {
 
