@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="service.css" rel='stylesheet' type='text/css' />
     <link href="home.css" rel='stylesheet' type='text/css' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
@@ -27,44 +26,44 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost:8080/home">Home </a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Our Services</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/ourServices">Our Services</a>
                 </li>
 
                 <li class="nav-item">
                     <a href="http://localhost:8080/service" class="nav-link">Book Now</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="http://localhost:8080/contact">Contact Us</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Contact Us</a>
                 </li>
 
             </ul>
         </div>
     </nav>
-    <div id="serviceInfo" class="container">
-        <h1>
-            <center>Our Services</center>
-        </h1>
-        
+    <div class="about-section paddingTB60 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-6">
+                    <div class="about-title clearfix">
+                        <h1>Contact <span>Us</span></h1>
+                        <h3>Lorem ipsum dolor sit amet </h3>
+                        <p class="about-paddingB">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet
+                            dolor libero, eget venenatis mauris finibus dictum. Vestibulum quis elit eget neque
+                            porttitor congue non sit amet dolor. Proin pretium purus a lorem ornare </p>
+                        <p>sed lobortis pulvinar. Integer laoreet mi id eros porta euismod. Suspendisse potenti. Nulla
+                            eros mauris, convallis et sem tempus, viverra hendrerit sapien</p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-5 col-sm-6">
+                    <div class="about-img">
+                        <img src="https://devitems.com/preview/appmom/img/mobile/2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
-<script>
-    fetch('http://localhost:3000/services/')
-        .then(res => res.json())
-        .then(response => {
-            console.log(response)
-            var serviceHtml = '';
-                for (var i = 0; i < response.length; i++) {
-                    serviceHtml +=  `<p> Service: ${response[i].name} </p>`;
-                    serviceHtml += `<p> Price: $${response[i].price} </p>`;
-                    serviceHtml += `<p> Time: ${response[i].time} Mins </p>`;
-                }
-                const serviceContainer = document.getElementById("serviceInfo");
-                serviceContainer.innerHTML = serviceHtml;
-        })
-        .catch(error => console.error('Error:', error));
-</script>
-
 
 </html>
