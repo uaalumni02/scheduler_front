@@ -120,5 +120,40 @@
     </div>
 
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const theForm = document.getElementById("contact-form");
+        theForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let firstName = document.getElementById("form_name").value;
+            let lastName = document.getElementById("form_lastname").value;
+            let email = document.getElementById("form_email").value;
+            let phone = document.getElementById("form_phone").value;
+            let message = document.getElementById("form_message").value;
+           
+            fetch('http://localhost:3000/contacts', {
+                method: "post",
+                headers: {
+
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phone: phone,
+                    message: message,
+                })
+            })
+                .then(res => res.json())
+                .then(response => {
+                    console.log('message added') 
+                    //add message confirmation
+                }).catch(error => console.error('Error:', error));
+
+        })
+    })
+
+</script>
 
 </html>
