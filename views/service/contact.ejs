@@ -43,6 +43,8 @@
         </div>
     </nav>
     <br></br>
+    <div id="confirm"></div>
+    <br></br>
     <div class="container">
 
         <div class="row">
@@ -148,8 +150,10 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    console.log('message added') 
-                    //add message confirmation
+                    let html = '';
+                    html += `<p>  Thank you ${response.firstName}, your message has been received. </p>`;
+                    const messageContainer = document.getElementById("confirm");
+                    messageContainer.innerHTML = html;
                 }).catch(error => console.error('Error:', error));
                 $('#contact-form').get(0).reset();
         })
