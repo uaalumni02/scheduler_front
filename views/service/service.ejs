@@ -41,7 +41,7 @@
                   </ul>
                 </div>
               </nav>
-    
+    <br></br>
     <form id="barberForm" action="" method="post">
         <div id="name" class="container">
             <h1>
@@ -67,39 +67,43 @@
         <div id="container-contact100">
             <div class="wrap-contact100">
                 <span class="contact100-form-title">
-                    Enter Customer Information
+                   <h1>Enter Customer Information</h1> 
                 </span>
+<br></br>
+                <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">Full Name *</label>
+                            <input id="customerName" type="text" name="name" class="form-control"
+                                placeholder="Please enter your full name *" required="required"
+                                data-error="Full name is required.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
 
-                <div class="wrap-input100  bg1">
-                    <span class="label-input100">FULL NAME *</span>
-                    <input class="input100" id="customerName" type="text" name="name" placeholder="Enter Your Name" required>
-                </div>
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_name">Email *</label>
+                                <input id="email" type="text" name="name" class="form-control"
+                                    placeholder="Please enter email *" required="required"
+                                    data-error="Email is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
 
-                <div class="wrap-input100  bg1 rs1-wrap-input100">
-                    <span class="label-input100">Email *</span>
-                    <input class="input100" type="text" name="email" id="email" placeholder="Enter Your Email" required>
-                </div>
-
-                <div class="wrap-input100 bg1 rs1-wrap-input100">
-                    <span class="label-input100">Phone *</span>
-                    <input class="input100" id="phone" type="text" name="phone" placeholder="Enter Number Phone" required>
-                </div>
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="form_name">Phone *</label>
+                                    <input id="phone" type="text" name="name" class="form-control"
+                                        placeholder="Please enter your phone number *" required="required"
+                                        data-error="Phone is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
             </div>
             <button id="bookBtn" type="submit" onclick="booked()" value="Book"> Book </button>
         </div>
             <div id="confirm"></div>
     </form>
-    <footer>
-        <div class="footer">
-          <div class="container">
-            <p>Address:- Atlanta, Georgia <br>
-              Mobile : 404-404-4444 Phone : + 404-404-4444 <br>
-              Email: abc@gmail.com<br>
-              Copyright &copy; 2019 The Bell Group, LLC.</p>
-    
-          </div>
-        </div>
-      </footer>
 </body>
 <script src="service.js"></script>
 <script>
@@ -152,11 +156,9 @@
             let appointmentDate = document.getElementById("date").value;
             let startTime = document.getElementById("startTime").value;
             let service = document.getElementById("service").value;
-
             fetch('http://localhost:3000/appointments', {
                 method: "post",
                 headers: {
-
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -177,10 +179,8 @@
                     const customerContainer = document.getElementById("confirm");
                     customerContainer.innerHTML = html;
                 }).catch(error => console.error('Error:', error));
-
         })
     })
-
 </script>
 
 
