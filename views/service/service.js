@@ -1,15 +1,9 @@
 
-
-const nextButton1 = document.getElementById('serviceBtn');
-
-nextButton1.addEventListener('click', (e) => {
-    e.preventDefault();
+const serviceSelector = () => {
     const selectedService = document.querySelector('input[name="service"]:checked').value;
     document.getElementById('name').style.display = "none";
-    document.getElementById('serviceBtn').style.display = "none";
     document.getElementById('calender').style.display = "block";
-
-})
+}
 
 
 const customerInfo = () => {

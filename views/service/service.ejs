@@ -14,65 +14,73 @@
 </head>
 
 <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">BarberShop</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-            
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="http://localhost:8080/home">Home </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="http://localhost:8080/ourServices">Our Services</a>
-                    </li>
-            
-                    <li class="nav-item active">
-                      <a href="" class="nav-link">Book Now</a>
-                    </li>
-            
-                    <li class="nav-item">
-                      <a class="nav-link" href="http://localhost:8080/contact">Contact Us</a>
-                    </li>
-            
-                  </ul>
-                </div>
-              </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">BarberShop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/home">Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/ourServices">Our Services</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a href="" class="nav-link">Book Now</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/contact">Contact Us</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
     <br></br>
     <form id="barberForm" action="" method="post">
         <div id="name" class="container">
             <h1>
                 <center>Select a Service</center>
             </h1>
+            <br></br>
             <% for(var i = 0; i < response.length; i++) { %>
-            <input id="service" type="radio" name="service" value="<%= response[i]._id %>">
-            <span class="checkmark"></span>
-            <span id="serviceName" class="item-name"> <%= response[i].name %> </span>
-            <span id="price" class="item-price"> $<%= response[i].price %> </span>
-            <span id="time" class="item-time"> <%= response[i].time %> mins </span>
+            <div class="card service-option" style="width: 18rem;">
+                <div class="card-body">
+                    <h4 id="serviceName" class="item-name card-title"> <%= response[i].name %> </h4>
+                    <h2 id="price" class="item-price"> $<%= response[i].price %> </h2>
+                    <h5 id="time" class="item-time"> <%= response[i].time %> mins </h5>
+                    <div class="form-radio">
+                        <input id="service" onclick="serviceSelector()" type="radio" name="service"
+                            value="<%= response[i]._id %>">
+                    </div>
+                </div>
+            </div>
             <% } %>
         </div>
-
-        <div class="row justify-content-center">
-            <button id="serviceBtn" type="submit" class="btn-primary.custom-btn">Continue</button>
-        </div>
-
-        <div id="calender">
-            <input id="date" onchange="calender()" type="date" name="appointmentDate" min="2019-04-09">
-            <div id="apptTime" onclick="customerInfo()"></div>
-        </div>
+        <center>
+            <div id="calender">
+                    <h1>Select a Date and Time</h1>
+                    <br></br>
+                <input id="date" onchange="calender()" type="date" name="appointmentDate" min="2019-04-09">
+                <br></br>
+                <div id="apptTime" onclick="customerInfo()"></div>
+            </div>
+        </center>
         <div id="container-contact100">
             <div class="wrap-contact100">
                 <span class="contact100-form-title">
-                   <h1>Enter Customer Information</h1> 
+                    <h1 style="text-align: center">Enter Customer Information</h1>
                 </span>
-<br></br>
-                <div class="col-md-6">
+                <br></br>
+                <center>
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label for="form_name">Full Name *</label>
+                            <label for="form_name"></label>
                             <input id="customerName" type="text" name="name" class="form-control"
                                 placeholder="Please enter your full name *" required="required"
                                 data-error="Full name is required.">
@@ -81,28 +89,32 @@
                     </div>
 
                     <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="form_name">Email *</label>
-                                <input id="email" type="text" name="name" class="form-control"
-                                    placeholder="Please enter email *" required="required"
-                                    data-error="Email is required.">
-                                <div class="help-block with-errors"></div>
-                            </div>
+                        <div class="form-group">
+                            <label for="form_name"></label>
+                            <input id="email" type="text" name="name" class="form-control"
+                                placeholder="Please enter email *" required="required" data-error="Email is required.">
+                            <div class="help-block with-errors"></div>
                         </div>
+                    </div>
 
-                        <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="form_name">Phone *</label>
-                                    <input id="phone" type="text" name="name" class="form-control"
-                                        placeholder="Please enter your phone number *" required="required"
-                                        data-error="Phone is required.">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name"></label>
+                            <input id="phone" type="text" name="name" class="form-control"
+                                placeholder="Please enter your phone number *" required="required"
+                                data-error="Phone is required.">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
             </div>
-            <button id="bookBtn" type="submit" onclick="booked()" value="Book"> Book </button>
+            <center>
+                <button id="bookBtn" style="text-align: center" class="btn btn-secondary" type="submit"
+                    onclick="booked()" value="Book"> Book
+                </button>
+            </center>
         </div>
-            <div id="confirm"></div>
+        </center>
+        <div id="confirm"></div>
     </form>
 </body>
 <script src="service.js"></script>
@@ -135,9 +147,11 @@
                 })
                 var radioHtml = '';
                 for (var i = 0; i < eligibleAppts.length; i++) {
-                    radioHtml += `<input type="radio" id="startTime" name="startTime" value="${eligibleAppts[i]}">`;
+                    radioHtml += `<div  class="card" align="center" style="width: 18rem;">`;
                     radioHtml += `<span>  ${eligibleAppts[i]} </span>`;
+                    radioHtml += `<input type="radio" id="startTime" name="startTime" value="${eligibleAppts[i]}">`;
                     radioHtml += '</input>';
+                    radioHtml += '</div>';
                 }
                 const timeContainer = document.getElementById("apptTime");
                 timeContainer.innerHTML = radioHtml;
@@ -174,8 +188,8 @@
                 .then(response => {
                     const dateString = moment.unix(response.appointmentDate).format('YYYY-MM-DD');
                     let html = '';
-                    html += `<p>  Thank you for Booking ${response.name}! </p>`;
-                    html += `<p>  Your Appointment is on: ${dateString} at ${response.startTime}  </p>`;
+                    html += `<h4>  Thank you for Booking ${response.name}! </h4>`;
+                    html += `<h5>  Your Appointment is on: ${dateString} at ${response.startTime}  </h5>`;
                     const customerContainer = document.getElementById("confirm");
                     customerContainer.innerHTML = html;
                 }).catch(error => console.error('Error:', error));
