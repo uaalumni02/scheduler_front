@@ -46,9 +46,9 @@
     <h1>
         <center>Our Services</center>
     </h1>
-    <div class="card" id="services" style="width: 18rem;">
-    </div>
-
+    <center>
+        <div class="card-body" id="services"> </div>
+    </center>
 </body>
 <script>
     fetch('http://localhost:3000/services/')
@@ -57,9 +57,9 @@
             var serviceHtml = '';
             for (var i = 0; i < response.length; i++) {
                 serviceHtml += `<div align="center" class="card" style="width: 18rem;">`;
-                serviceHtml += `<h6>  ${response[i].name} </h6>`;
-                serviceHtml += `<p> $${response[i].price} </p>`;
-                serviceHtml += `<p> ${response[i].time} Mins </p>`;
+                serviceHtml += `<h4>  ${response[i].name} </h4>`;
+                serviceHtml += `<h2> $${response[i].price} </h2>`;
+                serviceHtml += `<h5> ${response[i].time} Mins </h5>`;
                 serviceHtml += '</div>';
             }
             const serviceContainer = document.getElementById("services");

@@ -11,6 +11,3 @@ const customerInfo = () => {
     document.getElementById('container-contact100').style.display = "block";
 }
 
-const booked = () => {
-    document.getElementById('container-contact100').style.display = "none";
-}
