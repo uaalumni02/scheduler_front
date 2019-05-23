@@ -17,7 +17,9 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">BarberShop</a>
+        <a class="navbar-brand" href="#"><img
+                src="https://i.pinimg.com/originals/2c/9c/ee/2c9ceecf2365f963bd305a10f513fe73.jpg" style="width: 70px;">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,12 +45,14 @@
             </ul>
         </div>
     </nav>
+    <br></br>
     <h1>
-        <center>Our Services</center>
+        <center style="font-style: italic">Our Services</center>
     </h1>
-    <center>
-        <div class="card-body" id="services"> </div>
-    </center>
+    <br></br>
+    <div id="name" class="container">
+    <div id="services"> </div>
+    </div>
 </body>
 <script>
     fetch('http://localhost:3000/services/')
@@ -56,11 +60,13 @@
         .then(response => {
             var serviceHtml = '';
             for (var i = 0; i < response.length; i++) {
-                serviceHtml += `<div align="center" class="card" style="width: 18rem;">`;
-                serviceHtml += `<h4>  ${response[i].name} </h4>`;
-                serviceHtml += `<h2> $${response[i].price} </h2>`;
-                serviceHtml += `<h5> ${response[i].time} Mins </h5>`;
-                serviceHtml += '</div>';
+                serviceHtml += ` <div class="card service-option"  style="width: 18rem;">`
+                serviceHtml += `<div class="card-body">`
+                serviceHtml += `<h4 id="serviceName" class="item-name card-title">${response[i].name} </h4>`;
+                serviceHtml += `<h2 id="price" class="item-price"> $${response[i].price} </h2>`;
+                serviceHtml += `<h5 id="time" class="item-time"> ${response[i].time} Mins </h5>`;
+                serviceHtml += `</div>`;
+                serviceHtml += `</div>`;
             }
             const serviceContainer = document.getElementById("services");
             serviceContainer.innerHTML = serviceHtml;

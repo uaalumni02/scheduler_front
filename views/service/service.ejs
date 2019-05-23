@@ -16,7 +16,9 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">BarberShop</a>
+        <a class="navbar-brand" href="#"><img
+                src="https://i.pinimg.com/originals/2c/9c/ee/2c9ceecf2365f963bd305a10f513fe73.jpg" style="width: 70px;">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -46,7 +48,7 @@
     <form id="barberForm" action="" method="post">
         <div id="name" class="container">
             <h1>
-                <center>Select a Service</center>
+                <center style="font-style: italic">Select a Service</center>
             </h1>
             <br></br>
             <% for(var i = 0; i < response.length; i++) { %>
@@ -65,9 +67,9 @@
         </div>
         <center>
             <div id="calender">
-                <h1>Select a Date and Time</h1>
+                <h1 style="font-style: italic">Select a Date and Time</h1>
                 <br></br>
-                <input id="date" onchange="calender()" type="date" name="appointmentDate" min="2019-04-09">
+                <input id="date" style="height: 50px" onchange="calender()" type="date" name="appointmentDate" min="2019-04-09">
                 <br></br>
                 <div id="apptTime" onclick="customerInfo()"></div>
             </div>
@@ -75,7 +77,7 @@
         <div id="container-contact100">
             <div id="wrap-contact100">
                 <span class="contact100-form-title">
-                    <h1 style="text-align: center">Enter Customer Information</h1>
+                    <h1 style="text-align: center; font-style: italic" >Enter Customer Information</h1>
                 </span>
                 <br></br>
                 <center>
@@ -148,8 +150,8 @@
                 var radioHtml = '';
                 for (var i = 0; i < eligibleAppts.length; i++) {
                     radioHtml += `<div  class="card"  align="center" style="width: 18rem;">`;
-                    radioHtml += `<span>  ${eligibleAppts[i]} </span>`;
-                    radioHtml += `<input type="radio" id="startTime" name="startTime" value="${eligibleAppts[i]}">`;
+                    radioHtml += `<h3>  ${eligibleAppts[i]} </h3>`;
+                    radioHtml += `<input type="radio" id="startTime"  name="startTime" value="${eligibleAppts[i]}">`;
                     radioHtml += `<br></br>`
                     radioHtml += '</input>';
                     radioHtml += '</div>';
