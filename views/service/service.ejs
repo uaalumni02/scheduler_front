@@ -40,7 +40,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://localhost:8080/contact">Contact Us</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8080/appointment">Appointments<span
+                            class="sr-only">(current)</span></a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -69,7 +72,8 @@
             <div id="calender">
                 <h1 style="font-style: italic">Select a Date and Time</h1>
                 <br></br>
-                <input id="date" style="height: 50px" onchange="calender()" type="date" name="appointmentDate" min="2019-04-09">
+                <input id="date" style="height: 50px" onchange="calender()" type="date" name="appointmentDate"
+                    min="2019-04-09">
                 <br></br>
                 <div id="apptTime" onclick="customerInfo()"></div>
             </div>
@@ -77,7 +81,7 @@
         <div id="container-contact100">
             <div id="wrap-contact100">
                 <span class="contact100-form-title">
-                    <h1 style="text-align: center; font-style: italic" >Enter Customer Information</h1>
+                    <h1 style="text-align: center; font-style: italic">Enter Customer Information</h1>
                 </span>
                 <br></br>
                 <center>
@@ -151,7 +155,7 @@
                 for (var i = 0; i < eligibleAppts.length; i++) {
                     radioHtml += `<div  class="card"  align="center" style="width: 18rem;">`;
                     radioHtml += `<h3>  ${eligibleAppts[i]} </h3>`;
-                    radioHtml += `<input type="radio" id="startTime"  name="startTime" value="${eligibleAppts[i]}">`;
+                    radioHtml += `<input type="radio"  id="startTime"  name="startTime" value="${eligibleAppts[i]}">`;
                     radioHtml += `<br></br>`
                     radioHtml += '</input>';
                     radioHtml += '</div>';
@@ -172,7 +176,8 @@
             let email = document.getElementById("email").value;
             let appointmentDate = document.getElementById("date").value;
             let startTime = document.getElementById("startTime").value;
-            let service = document.getElementById("service").value;
+            let service = document.querySelector('input[name="service"]:checked').value;
+            console.log(service)
             fetch('http://localhost:3000/appointments', {
                 method: "post",
                 headers: {
@@ -189,6 +194,7 @@
             })
                 .then(res => res.json())
                 .then(response => {
+                    // console.log(response)
                     const dateString = moment.unix(response.appointmentDate).format('YYYY-MM-DD');
                     let html = '';
                     html += `<h4>  Thank you for Booking ${response.name}! </h4>`;

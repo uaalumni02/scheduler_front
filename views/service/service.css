@@ -56,5 +56,5 @@ h5#time.item-time {
 input[type=radio]{
     transform:scale(1.5);
     position: relative;
-  left: 100px;
+    left: 100px;
   }

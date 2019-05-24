@@ -24,6 +24,12 @@ app.get('/contact', (req, res) => {
   return res.render('service/contact')
 });
 
+app.get('/appointment', (req, res) => {
+  return res.render('service/logIn')
+});
+app.get('/showAppointments', (req, res) => {
+  return res.render('service/showAppointments')
+});
 
 app.get('/service', (req, res) => {
 
