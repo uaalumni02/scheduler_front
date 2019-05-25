@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="home.css" rel='stylesheet' type='text/css' />
+    <link href="service/login.css" rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <title>Cuts By De'Meco</title>
 </head>
 
@@ -50,17 +53,55 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="form_name">Password *</label>
-                <input id="password" type="text" class="form-control" placeholder="Please enter your Password *"
+                <input id="passwordInfo" type="password" class="form-control" placeholder="Please enter your Password *"
                     required="required" data-error="Password is required.">
                 <div class="help-block with-errors"></div>
             </div>
         </div>
-        <button id="passwordBtn" type="submit" class="btn btn-secondary"> Submit
+        <button id="passwordBtn" type="submit" class="btn btn-secondary"> Submit</button>
     </form>
+    <div id="bookedAppts"></div>
 </body>
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const theForm = document.getElementById("passwordForm");
+        theForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const password = document.getElementById('passwordInfo').value
+            fetch('http://localhost:3000/passwords/' + password, {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(res => res.json())
+                .then(response => {
+                    if (response[0].password === password) {
+                        document.getElementById('bookedAppts').style.display = "block";
+                    }
+                }).catch(error => console.error('wrong password'));
+            $('#passwordForm').get(0).reset();
+        })
+    })
+</script>
 
-    
+<script>
+    fetch('http://localhost:3000/appointments/')
+        .then(res => res.json())
+        .then(response => {
+            var apptHtml = '';
+            for (var i = 0; i < response.length; i++) {
+                const timestamp = response[i].appointmentDate
+                // var date = new Date (timestamp*1000);
+                var date = moment.unix(timestamp).format("MM/DD/YYYY");
+                apptHtml += `<h4 id="customerName">${response[i].name} </h4>`;
+                apptHtml += `<h2 id="date"> ${date} </h2>`;
+                apptHtml += `<h5 id="apptTime"> ${response[i].startTime} </h5>`;
+            }
+            const apptContainer = document.getElementById("bookedAppts");
+            apptContainer.innerHTML = apptHtml;
+        })
+        .catch(error => console.error('Error:', error));
 
 </script>
 

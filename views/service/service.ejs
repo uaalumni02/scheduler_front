@@ -177,7 +177,6 @@
             let appointmentDate = document.getElementById("date").value;
             let startTime = document.getElementById("startTime").value;
             let service = document.querySelector('input[name="service"]:checked').value;
-            console.log(service)
             fetch('http://localhost:3000/appointments', {
                 method: "post",
                 headers: {
