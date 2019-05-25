@@ -49,10 +49,13 @@
         </div>
     </nav>
     <br></br>
+    <center>
     <form id="passwordForm" action="" method="GET">
+            <h1 style="text-align: center">Enter Password</h1>
+            <br></br>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="form_name">Password *</label>
+                <label for="form_name" style="float: left">Password *</label>
                 <input id="passwordInfo" type="password" class="form-control" placeholder="Please enter your Password *"
                     required="required" data-error="Password is required.">
                 <div class="help-block with-errors"></div>
@@ -60,6 +63,7 @@
         </div>
         <button id="passwordBtn" type="submit" class="btn btn-secondary"> Submit</button>
     </form>
+    </center>
     <div id="bookedAppts"></div>
 </body>
 <script>
@@ -78,6 +82,7 @@
                 .then(response => {
                     if (response[0].password === password) {
                         document.getElementById('bookedAppts').style.display = "block";
+                        document.getElementById('passwordForm').style.display = "none";
                     }
                 }).catch(error => console.error('wrong password'));
             $('#passwordForm').get(0).reset();
@@ -92,7 +97,6 @@
             var apptHtml = '';
             for (var i = 0; i < response.length; i++) {
                 const timestamp = response[i].appointmentDate
-                // var date = new Date (timestamp*1000);
                 var date = moment.unix(timestamp).format("MM/DD/YYYY");
                 apptHtml += `<h4 id="customerName">${response[i].name} </h4>`;
                 apptHtml += `<h2 id="date"> ${date} </h2>`;
@@ -101,8 +105,8 @@
             const apptContainer = document.getElementById("bookedAppts");
             apptContainer.innerHTML = apptHtml;
         })
-        .catch(error => console.error('Error:', error));
-
+        .catch(error =>
+            console.error('Error:', error));
 </script>
 
 </html>
