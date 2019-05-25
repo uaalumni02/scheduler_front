@@ -175,7 +175,7 @@
             let phone = document.getElementById("phone").value;
             let email = document.getElementById("email").value;
             let appointmentDate = document.getElementById("date").value;
-            let startTime = document.getElementById("startTime").value;
+            let startTime = document.querySelector('input[name="startTime"]:checked').value;
             let service = document.querySelector('input[name="service"]:checked').value;
             fetch('http://localhost:3000/appointments', {
                 method: "post",

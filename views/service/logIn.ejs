@@ -64,7 +64,9 @@
         <button id="passwordBtn" type="submit" class="btn btn-secondary"> Submit</button>
     </form>
     </center>
+    <div id="name" class="container">
     <div id="bookedAppts"></div>
+    </div>
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -95,12 +97,18 @@
         .then(res => res.json())
         .then(response => {
             var apptHtml = '';
+            apptHtml += ` <h1 style="text-align:center">Booked Appointments</h1>`
+            apptHtml += `<br></br>`
             for (var i = 0; i < response.length; i++) {
                 const timestamp = response[i].appointmentDate
                 var date = moment.unix(timestamp).format("MM/DD/YYYY");
-                apptHtml += `<h4 id="customerName">${response[i].name} </h4>`;
-                apptHtml += `<h2 id="date"> ${date} </h2>`;
-                apptHtml += `<h5 id="apptTime"> ${response[i].startTime} </h5>`;
+                apptHtml += ` <div class="card service-option"  style="width: 18rem;">`
+                apptHtml += `<div class="card-body">`
+                apptHtml += `<h4 id="customerName" class="customer-name card-title">${response[i].name} </h4>`;
+                apptHtml += `<h5 id="date" class="appt-date"> ${date} </h5>`;
+                apptHtml += `<h5 id="apptTime" class="appt-time"> ${response[i].startTime} </h5>`;
+                apptHtml += `</div>`;
+                apptHtml += `</div>`;
             }
             const apptContainer = document.getElementById("bookedAppts");
             apptContainer.innerHTML = apptHtml;
