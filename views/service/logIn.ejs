@@ -89,7 +89,9 @@
                 .then(response => {
                     var apptHtml = '';
                     apptHtml += `<br></br>`
-                    apptHtml += ` <h1 style="text-align:center">Scheduled Appointments </h1>`
+                    if (Array.isArray(response) && response.length) {
+                        apptHtml += ` <h1 style="text-align:center"> Scheduled Appointments </h1> `
+                    }
                     apptHtml += `<br></br>`
                     for (var i = 0; i < response.length; i++) {
                         const timestamp = response[i].appointmentDate
