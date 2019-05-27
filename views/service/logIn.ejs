@@ -13,7 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <title>Cuts By De'Meco</title>
 </head>
 
@@ -52,22 +54,23 @@
     </nav>
     <br></br>
     <center>
-    <form id="passwordForm" action="" method="GET">
+        <form id="passwordForm" action="" method="GET">
             <h1 style="text-align: center">Enter Password</h1>
             <br></br>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label for="form_name" style="float: left">Password *</label>
-                <input id="passwordInfo" type="password" class="form-control" placeholder="Please enter your Password *"
-                    required="required" data-error="Password is required.">
-                <div class="help-block with-errors"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_name" style="float: left">Password *</label>
+                    <input id="passwordInfo" type="password" class="form-control"
+                        placeholder="Please enter your Password *" required="required"
+                        data-error="Password is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
             </div>
-        </div>
-        <button id="passwordBtn" type="submit" class="btn btn-secondary"> Submit</button>
-    </form>
+            <button id="passwordBtn" type="submit" class="btn btn-secondary"> Submit</button>
+        </form>
     </center>
     <div id="name" class="container">
-    <div id="bookedAppts"></div>
+        <div id="bookedAppts"></div>
     </div>
 </body>
 <script>
@@ -84,39 +87,27 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    if (response[0].password === password) {
-                        document.getElementById('bookedAppts').style.display = "block";
-                        document.getElementById('passwordForm').style.display = "none";
+                    var apptHtml = '';
+                    apptHtml += `<br></br>`
+                    for (var i = 0; i < response.length; i++) {
+                        const timestamp = response[i].appointmentDate
+                        var date = moment.unix(timestamp).format("MM/DD/YYYY");
+                        apptHtml += ` <div class="card service-option"  style="width: 18rem;">`
+                        apptHtml += `<div class="card-body">`
+                        apptHtml += `<h4 id="customerName" class="customer-name card-title">${response[i].name} </h4>`;
+                        apptHtml += `<h5 id="date" class="appt-date"> ${date} </h5>`;
+                        apptHtml += `<h5 id="apptTime" class="appt-time"> ${response[i].startTime} </h5>`;
+                        apptHtml += `</div>`;
+                        apptHtml += `</div>`;
                     }
+                    const apptContainer = document.getElementById("name");
+                    apptContainer.innerHTML = apptHtml;
+
                 }).catch(error => console.error('wrong password'));
             $('#passwordForm').get(0).reset();
         })
     })
 </script>
 
-<script>
-    fetch('http://localhost:3000/appointments/')
-        .then(res => res.json())
-        .then(response => {
-            var apptHtml = '';
-            apptHtml += ` <h1 style="text-align:center">Booked Appointments</h1>`
-            apptHtml += `<br></br>`
-            for (var i = 0; i < response.length; i++) {
-                const timestamp = response[i].appointmentDate
-                var date = moment.unix(timestamp).format("MM/DD/YYYY");
-                apptHtml += ` <div class="card service-option"  style="width: 18rem;">`
-                apptHtml += `<div class="card-body">`
-                apptHtml += `<h4 id="customerName" class="customer-name card-title">${response[i].name} </h4>`;
-                apptHtml += `<h5 id="date" class="appt-date"> ${date} </h5>`;
-                apptHtml += `<h5 id="apptTime" class="appt-time"> ${response[i].startTime} </h5>`;
-                apptHtml += `</div>`;
-                apptHtml += `</div>`;
-            }
-            const apptContainer = document.getElementById("bookedAppts");
-            apptContainer.innerHTML = apptHtml;
-        })
-        .catch(error =>
-            console.error('Error:', error));
-</script>
 
 </html>
