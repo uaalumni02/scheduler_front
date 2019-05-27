@@ -91,6 +91,8 @@
                     apptHtml += `<br></br>`
                     if (Array.isArray(response) && response.length) {
                         apptHtml += ` <h1 style="text-align:center"> Scheduled Appointments </h1> `
+                    } else {
+                        apptHtml += ` <h4 style="text-align:center"> * Incorrect Password </h4> `
                     }
                     apptHtml += `<br></br>`
                     for (var i = 0; i < response.length; i++) {
