@@ -58,3 +58,10 @@ input[type=radio]{
     position: relative;
     left: 100px;
   }
+
+  .timeRadio {
+    position: relative;
+    right: 100px;
+  }
+
+  

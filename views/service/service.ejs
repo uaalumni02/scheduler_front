@@ -53,7 +53,7 @@
     <form id="barberForm" action="" method="post">
         <div id="name" class="container">
             <h1>
-                <center style="font-style: italic">Select a Service</center>
+                <center>Select a Service</center>
             </h1>
             <br></br>
             <% for(var i = 0; i < response.length; i++) { %>
@@ -72,7 +72,7 @@
         </div>
         <center>
             <div id="calender">
-                <h1 style="font-style: italic">Select a Date and Time</h1>
+                <h1>Select a Date and Time</h1>
                 <br></br>
                 <input id="date" style="height: 50px" onchange="calender()" type="date" name="appointmentDate"
                     min="2019-04-09">
@@ -157,7 +157,9 @@
                 for (var i = 0; i < eligibleAppts.length; i++) {
                     radioHtml += `<div  class="card"  align="center" style="width: 18rem;">`;
                     radioHtml += `<h3>  ${eligibleAppts[i]} </h3>`;
-                    radioHtml += `<input type="radio"  id="startTime"  name="startTime" value="${eligibleAppts[i]}">`;
+                    radioHtml += '<div class="timeRadio">';
+                    radioHtml += `<input type="radio" id="startTime"  name="startTime" value="${eligibleAppts[i]}">`;
+                    radioHtml += '</div>';
                     radioHtml += `<br></br>`
                     radioHtml += '</input>';
                     radioHtml += '</div>';
