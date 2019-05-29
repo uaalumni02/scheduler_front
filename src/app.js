@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import ejs from 'ejs';
 import axios from 'axios'
@@ -8,8 +9,9 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname,  'views'))
 
-app.use(express.static(__dirname + '/views'))
+// app.use(express.static(__dirname + 'views'))
 
 
 app.get('/home', (req, res) => {
