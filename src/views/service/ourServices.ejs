@@ -63,7 +63,7 @@
     </div>
 </body>
 <script>
-    fetch('https://localhost:3000/services/')
+    fetch('/services/', { method: 'GET' }) 
         .then(res => res.json())
         .then(response => {
             var serviceHtml = '';
