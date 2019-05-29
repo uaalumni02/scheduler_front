@@ -10,13 +10,16 @@ const port = process.env.PORT || 8080;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname,  'views'))
+console.log(path.join(__dirname, 'views'))
 
-// app.use(express.static(__dirname + 'views'))
+app.use(express.static(path.join(__dirname + '/assets')));
 
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   return res.render('home')
 });
+
+app.get('/home', (req, res) => res.redirect('/'));
 
 app.get('/ourServices', (req, res) => {
   return res.render('service/ourServices')
