@@ -38,7 +38,7 @@ app.get('/showAppointments', (req, res) => {
 
 app.get('/service', (req, res) => {
 
-  var requestUrl = '/services'
+  var requestUrl = 'http://localhost:3000/services'
 
   return axios.get(requestUrl)
     .then((response) => {
