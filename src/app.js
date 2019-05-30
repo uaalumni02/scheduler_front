@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 app.get('/home', (req, res) => res.redirect('/'));
 
-app.get('/ourServices', (req, res) => {
+app.get('/Services', (req, res) => {
   return res.render('service/ourServices')
 });
 
