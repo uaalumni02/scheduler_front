@@ -63,7 +63,7 @@
     </div>
 </body>
 <script>
-    fetch('/services/')
+    fetch('https://barber-scheduler-api.herokuapp.com/services')
         .then(res => res.json())
         .then(response => {
             var serviceHtml = '';
