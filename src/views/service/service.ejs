@@ -128,7 +128,7 @@
 <script src="service.js"></script>
 <script>
     var times;
-    fetch('http://localhost:3000/times/')
+    fetch('https://barber-scheduler-api.herokuapp.com/times')
         .then(res => res.json())
         .then(response => {
             times = response
@@ -137,7 +137,7 @@
     const calender = () => {
         const calenderData = document.getElementById("date").value;
         const dateTimestamp = moment(calenderData, 'YYYY-MM-DD').unix()
-        fetch('http://localhost:3000/appointments/' + dateTimestamp, {
+        fetch('https://barber-scheduler-api.herokuapp.com/appointments' + dateTimestamp, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -181,7 +181,7 @@
             let appointmentDate = document.getElementById("date").value;
             let startTime = document.querySelector('input[name="startTime"]:checked').value;
             let service = document.querySelector('input[name="service"]:checked').value;
-            fetch('http://localhost:3000/appointments', {
+            fetch('https://barber-scheduler-api.herokuapp.com/appointments', {
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json',
@@ -197,7 +197,6 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    // console.log(response)
                     const dateString = moment.unix(response.appointmentDate).format('YYYY-MM-DD');
                     let html = '';
                     html += `<h4>  Thank you for Booking ${response.name}! </h4>`;
