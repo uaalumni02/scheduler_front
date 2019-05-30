@@ -9,7 +9,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="service.css" rel='stylesheet' type='text/css' />
     <link href="css/home.css" rel='stylesheet' type='text/css' />
-    <link href="service/ourServices.css" rel='stylesheet' type='text/css' />
+    <link href="css/ourServices.css" rel='stylesheet' type='text/css' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -63,7 +63,7 @@
     </div>
 </body>
 <script>
-    fetch('/services/', { method: 'GET' }) 
+    fetch('http://localhost:3000/services/')
         .then(res => res.json())
         .then(response => {
             var serviceHtml = '';
