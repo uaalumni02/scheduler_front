@@ -195,7 +195,7 @@
             let appointmentDate = document.getElementById("date").value;
             let startTime = document.querySelector('input[name="startTime"]:checked').value;
             let service = document.querySelector('input[name="service"]:checked').value;
-            fetch('https://barber-scheduler-api.herokuapp.com/appointments', {
+            fetch('https://barber-scheduler-api.herokuapp.com/appointments/', {
                 method: "post",
                 headers: {
                     'Content-Type': 'application/json',
