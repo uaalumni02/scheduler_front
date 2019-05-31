@@ -125,7 +125,14 @@
     </form>
     <div id="confirm"></div>
 </body>
-<script src="service.js"></script>
+<script>
+const serviceSelector = () => {
+    const selectedService = document.querySelector('input[name="service"]:checked').value;
+    document.getElementById('name').style.display = "none";
+    document.getElementById('calender').style.display = "block";
+}
+
+</script>
 <script>
     var times;
     fetch('https://barber-scheduler-api.herokuapp.com/times')
