@@ -137,7 +137,7 @@
     const calender = () => {
         const calenderData = document.getElementById("date").value;
         const dateTimestamp = moment(calenderData, 'YYYY-MM-DD').unix()
-        fetch('https://barber-scheduler-api.herokuapp.com/appointments' + dateTimestamp, {
+        fetch('https://barber-scheduler-api.herokuapp.com/appointments/' + dateTimestamp, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
