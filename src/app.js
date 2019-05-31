@@ -10,7 +10,6 @@ const port = process.env.PORT || 8080;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname,  'views'))
-console.log(path.join(__dirname, 'views'))
 
 app.use(express.static(path.join(__dirname + '/assets')));
 
@@ -32,9 +31,7 @@ app.get('/contact', (req, res) => {
 app.get('/appointment', (req, res) => {
   return res.render('service/logIn')
 });
-app.get('/showAppointments', (req, res) => {
-  return res.render('service/showAppointments')
-});
+
 
 app.get('/service', (req, res) => {
 
