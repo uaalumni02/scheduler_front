@@ -12,7 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <title>Cuts By De'Meco</title>
 </head>
 
@@ -43,8 +45,7 @@
                     <a class="nav-link" href="./contact">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./appointment">Appointments<span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./appointment">Appointments<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
@@ -126,12 +127,18 @@
     <div id="confirm"></div>
 </body>
 <script>
-const serviceSelector = () => {
-    const selectedService = document.querySelector('input[name="service"]:checked').value;
-    document.getElementById('name').style.display = "none";
-    document.getElementById('calender').style.display = "block";
-}
+    const serviceSelector = () => {
+        const selectedService = document.querySelector('input[name="service"]:checked').value;
+        document.getElementById('name').style.display = "none";
+        document.getElementById('calender').style.display = "block";
+    }
+</script>
 
+<script>
+    const customerInfo = () => {
+        document.getElementById('calender').style.display = "none";
+        document.getElementById('container-contact100').style.display = "block";
+    }
 </script>
 <script>
     var times;
