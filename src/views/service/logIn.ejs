@@ -79,7 +79,7 @@
         theForm.addEventListener("submit", (event) => {
             event.preventDefault();
             const password = document.getElementById('passwordInfo').value
-            fetch('https://barber-scheduler-api.herokuapp.com/passwords' + password, {
+            fetch('https://barber-scheduler-api.herokuapp.com/passwords/' + password, {
                 method: "GET",
                 headers: {
                     'Content-Type': 'application/json',
