@@ -211,7 +211,7 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    const dateString = moment.unix(response.appointmentDate).format('YYYY-MM-DD');
+                    const dateString = moment(response.appointmentDate).format('YYYY-MM-DD');
                     let html = '';
                     html += `<h4>  Thank you for Booking ${response.name}! </h4>`;
                     html += `<h5>  Your Appointment is on: ${dateString} at ${response.startTime}  </h5>`;
