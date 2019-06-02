@@ -27,21 +27,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="./home">Home </a>
+                    <a class="nav-link" href="http://localhost:8080/home">Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./ourServices">Our Services</a>
+                    <a class="nav-link" href="http://localhost:8080/ourServices">Our Services</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="./service" class="nav-link">Book Now</a>
+                    <a href="http://localhost:8080/service" class="nav-link">Book Now</a>
                 </li>
 
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./appointment">Appointments<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="http://localhost:8080/appointment">Appointments<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
@@ -142,7 +142,7 @@
             let phone = document.getElementById("form_phone").value;
             let message = document.getElementById("form_message").value;
            
-            fetch('https://barber-scheduler-api.herokuapp.com/contacts', {
+            fetch('http://localhost:3000/contacts', {
                 method: "post",
                 headers: {
 

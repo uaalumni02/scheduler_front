@@ -35,7 +35,7 @@ app.get('/appointment', (req, res) => {
 
 app.get('/service', (req, res) => {
 
-  var requestUrl = 'https://barber-scheduler-api.herokuapp.com/services'
+  var requestUrl = 'http://localhost:3000/services'
 
   return axios.get(requestUrl)
     .then((response) => {
