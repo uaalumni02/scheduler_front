@@ -150,8 +150,8 @@
         .catch(error => console.error('Error:', error));
     const calender = () => {
         const calenderDate = document.getElementById("date").value;
-        // const dateTimestamp = moment(calenderDate, 'YYYY-MM-DD').unix()
-        fetch('https://barber-scheduler-api.herokuapp.com/appointments/' + calenderDate, {
+        const dateTimestamp = moment(calenderDate, 'YYYY-MM-DD').unix()
+        fetch('https://barber-scheduler-api.herokuapp.com/appointments/' + dateTimestamp, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -211,7 +211,7 @@
             })
                 .then(res => res.json())
                 .then(response => {
-                    const dateString = moment(response.appointmentDate).format('YYYY-MM-DD');
+                    const dateString = moment.unix(response.appointmentDate).format('YYYY-MM-DD');
                     let html = '';
                     html += `<h4>  Thank you for Booking ${response.name}! </h4>`;
                     html += `<h5>  Your Appointment is on: ${dateString} at ${response.startTime}  </h5>`;
