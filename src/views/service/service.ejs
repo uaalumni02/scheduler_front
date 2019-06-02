@@ -150,7 +150,8 @@
         .catch(error => console.error('Error:', error));
     const calender = () => {
         const calenderDate = document.getElementById("date").value;
-        fetch('https://barber-scheduler-api.herokuapp.com/appointments/' + calenderDate, {
+        const dateTimestamp = moment(calenderDate, 'YYYY-MM-DD').unix()
+        fetch('https://barber-scheduler-api.herokuapp.com/appointments/' + dateTimestamp, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
