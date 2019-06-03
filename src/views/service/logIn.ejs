@@ -91,9 +91,11 @@
                     apptHtml += `<br></br>`
                     if (Array.isArray(response) && response.length) {
                         apptHtml += ` <h1 style="text-align:center"> Scheduled Appointments </h1> `
-                    } else {
-                        apptHtml += ` <h4 style="text-align:center"> * Incorrect Password </h4> `
-                    }
+
+                    } 
+                    // else {
+                    //     apptHtml += ` <h4 style="text-align:center"> * Incorrect Password</h4> `
+                    // }
                     apptHtml += `<br></br>`
                     for (var i = 0; i < response.length; i++) {
                         const timestamp = response[i].appointmentDate
@@ -111,7 +113,7 @@
                     const apptContainer = document.getElementById("name");
                     apptContainer.innerHTML = apptHtml;
 
-                }).catch(error => console.error('wrong password'));
+                }).catch(error => console.error('Error:', error));
             $('#passwordForm').get(0).reset();
         })
     })
